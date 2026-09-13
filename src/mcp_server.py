@@ -1,6 +1,7 @@
 """
-🔌 MODEL CONTEXT PROTOCOL (MCP) SERVER MODULE
-Mô phỏng kiến trúc MCP Server (Client-Server Architecture) cung cấp công cụ chuẩn hóa.
+🔌 MODEL CONTEXT PROTOCOL (MCP) SERVER MODULE - VINBUS CUSTOMER SERVICE
+Mô phỏng kiến trúc MCP Server (Client-Server Architecture) cung cấp công cụ chuẩn hóa cho VinBus.
+Chủ đề 4.2: Trợ lý Dịch vụ Khách hàng VinBus.
 """
 
 import json
@@ -14,11 +15,11 @@ if sys.stdout.encoding != 'utf-8':
     except Exception:
         pass
 
-class MCPAcademicServer:
+class MCPVinBusServer:
     """
-    Giả lập MCP Server tuân thủ chuẩn giao thức Model Context Protocol
+    Giả lập MCP Server tuân thủ chuẩn giao thức Model Context Protocol cho VinBus
     """
-    def __init__(self, server_name: str = "vinuni-academic-mcp-server"):
+    def __init__(self, server_name: str = "vinbus-customer-mcp-server"):
         self.server_name = server_name
         self.version = "2026.1.0"
         
@@ -44,28 +45,31 @@ class MCPAcademicServer:
             "result": content
         }
 
+# Alias tương thích ngược
+MCPAcademicServer = MCPVinBusServer
+
 
 if __name__ == "__main__":
     print("==========================================================")
-    print("🔌 KIỂM THỬ ĐỘC LẬP MCP SERVER (vinuni-academic-mcp-server)")
+    print("🔌 KIỂM THỬ ĐỘC LẬP MCP SERVER (vinbus-customer-mcp-server)")
     print("==========================================================")
     
-    server = MCPAcademicServer()
+    server = MCPVinBusServer()
     tools = server.list_tools()
     print(f"✅ Khởi tạo thành công MCP Server: {server.server_name} (Version: {server.version})")
-    print(f"📦 Số lượng Tools công bố: {len(tools)}")
+    print(f"📦 Số lượng Tools công bố qua MCP: {len(tools)}")
     
     # Kiểm tra trạng thái TODO 1.2 (Tool Schema)
-    sched_tool = next((t for t in tools if t.get("name") == "schedule_appointment"), None)
-    if sched_tool and not sched_tool.get("parameters", {}).get("properties"):
-        print("⏳ [TODO 1.2]: Tool 'schedule_appointment' chưa được định nghĩa properties trong 'src/tools.py'.")
+    reg_tool = next((t for t in tools if t.get("name") == "register_monthly_pass"), None)
+    if reg_tool and not reg_tool.get("parameters", {}).get("properties"):
+        print("⏳ [TODO 1.2]: Tool 'register_monthly_pass' chưa được định nghĩa properties trong 'src/tools.py'.")
     else:
-        print("✅ [TODO 1.2]: Tool 'schedule_appointment' đã có schema đầy đủ.")
+        print("✅ [TODO 1.2]: Tool 'register_monthly_pass' đã có schema JSON Schema đầy đủ.")
 
     # Kiểm tra trạng thái TODO 2.1 (call_tool)
-    test_result = server.call_tool("academic_query", {"student_id": "SV2026001"})
+    test_result = server.call_tool("route_query", {"route_id": "E01"})
     if not test_result:
-        print("⏳ [TODO 2.1]: Hàm call_tool() đang trả về rỗng. Học viên hãy hoàn thiện TODO 2.1 trong 'src/mcp_server.py'!")
+        print("⏳ [TODO 2.1]: Hàm call_tool() đang trả về rỗng. Hãy kiểm tra lại!")
     else:
-        print(f"✅ [TODO 2.1]: Test dispatch tool 'academic_query' thành công:")
+        print(f"✅ [TODO 2.1]: Test dispatch tool 'route_query' (E01) thành công qua JSON-RPC 2.0:")
         print(f"   Phản hồi JSON-RPC: {json.dumps(test_result, ensure_ascii=False)}")

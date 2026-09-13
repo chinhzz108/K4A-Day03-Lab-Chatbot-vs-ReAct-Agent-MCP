@@ -121,17 +121,27 @@ def run_react_agent(user_query: str, provider, mcp_server: MCPAcademicServer) ->
                 if obs_data.get("status") == "SUCCESS":
                     if "data" in obs_data:
                         d = obs_data["data"]
-                        final_answer = (
-                            f"Kết quả tra cứu cho sinh viên {obs_data.get('student_id', '')} ({d.get('full_name', '')}): "
-                            f"Lớp {d.get('class', '')}, GPA: {d.get('gpa', '')}, Email: {d.get('email', '')}, "
-                            f"Trạng thái: {d.get('status', '')}, Cố vấn: {d.get('advisor', '')}."
-                        )
+                        if "route_name" in d:
+                            final_answer = (
+                                f"{d.get('route_name', '')}. "
+                                f"Giờ hoạt động: {d.get('operating_hours', '')}. "
+                                f"Tần suất: {d.get('frequency', '')}. Giá vé lượt: {d.get('single_ticket_price', '')}. "
+                                f"Lộ trình qua các điểm chính: {d.get('key_stops', '')}."
+                            )
+                        elif "full_name" in d:
+                            final_answer = (
+                                f"Kết quả tra cứu cho sinh viên {obs_data.get('student_id', '')} ({d.get('full_name', '')}): "
+                                f"Lớp {d.get('class', '')}, GPA: {d.get('gpa', '')}, Email: {d.get('email', '')}, "
+                                f"Trạng thái: {d.get('status', '')}, Cố vấn: {d.get('advisor', '')}."
+                            )
+                        else:
+                            final_answer = f"Dữ liệu từ hệ thống: {json.dumps(d, ensure_ascii=False)}"
                     elif "message" in obs_data:
                         final_answer = obs_data["message"]
                     else:
                         final_answer = f"Đã hoàn tất xử lý qua MCP Server: {json.dumps(obs_data, ensure_ascii=False)}"
                 elif obs_data.get("status") == "NOT_FOUND":
-                    final_answer = obs_data.get("message", "Không tìm thấy thông tin sinh viên yêu cầu.")
+                    final_answer = obs_data.get("message", "Không tìm thấy thông tin tuyến xe hoặc dữ liệu yêu cầu.")
                 else:
                     final_answer = f"Phản hồi từ công cụ: {json.dumps(obs_data, ensure_ascii=False)}"
             
@@ -178,14 +188,14 @@ if __name__ == "__main__":
     
     if "--interactive" in sys.argv:
         print("🎮 [INTERACTIVE MODE] Trò chuyện trực tiếp với ReAct Agent:")
-        print("💡 Gợi ý câu hỏi thử nghiệm:")
-        print("   - Câu hỏi chung: 'Quy chế học vụ VinUni yêu cầu bao nhiêu tín chỉ?'")
-        print("   - Tra cứu học vụ: 'Hãy tra cứu thông tin học vụ của sinh viên SV2026001'")
-        print("   - Đặt lịch hẹn: 'Đặt lịch hẹn tư vấn cho SV2026001 vào 14:00 ngày 15/09/2026'")
+        print("💡 Gợi ý câu hỏi thử nghiệm VinBus:")
+        print("   - Câu hỏi chung: 'Xe bus điện VinBus có những tiện ích gì nổi bật?'")
+        print("   - Tra cứu tuyến: 'Hãy tra cứu lộ trình và giờ chạy của tuyến xe bus điện E01'")
+        print("   - Đăng ký vé tháng: 'Đăng ký vé tháng tuyến E01 cho Nguyễn Văn An, SĐT 0912345678, đối tượng Học sinh'")
         print("   - Gõ 'exit' hoặc 'quit' để kết thúc phiên trò chuyện.\n")
         while True:
             try:
-                user_input = input("👤 Sinh viên hỏi: ").strip()
+                user_input = input("👤 Hành khách hỏi: ").strip()
                 if not user_input or user_input.lower() in ["exit", "quit"]:
                     print("👋 Tạm biệt! Kết thúc phiên trò chuyện.")
                     break

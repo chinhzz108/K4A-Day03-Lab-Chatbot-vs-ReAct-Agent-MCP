@@ -1,6 +1,7 @@
 """
-🛠️ TOOL DEFINITIONS & EXECUTION BACKEND
-Mã nguồn chứa danh sách Tool Schemas (JSON Schema) và Execution Layer phục vụ cho MCP Server.
+🛠️ TOOL DEFINITIONS & EXECUTION BACKEND - VINBUS CUSTOMER SERVICE
+Mã nguồn chứa danh sách Tool Schemas (JSON Schema) và Execution Layer phục vụ cho MCP Server VinBus.
+Chủ đề 4.2: Trợ lý Dịch vụ Khách hàng VinBus (Tra cứu lộ trình xe bus điện & Đăng ký vé tháng).
 """
 
 import json
@@ -11,112 +12,118 @@ from typing import Dict, Any
 # ==============================================================================
 
 TOOLS_SCHEMA = [
-    # Tool 1: Đã được định nghĩa mẫu sẵn cho Học viên tham khảo
+    # Tool 1: Tra cứu lộ trình tuyến xe bus điện VinBus
     {
-        "name": "academic_query",
-        "description": "Tra cứu hồ sơ và thông tin học vụ của sinh viên VinUni bằng mã sinh viên.",
+        "name": "route_query",
+        "description": "Tra cứu thông tin chi tiết, lộ trình di chuyển, giá vé lượt, tần suất và giờ hoạt động của tuyến xe bus điện VinBus bằng mã tuyến (ví dụ: 'E01', 'E03').",
         "parameters": {
             "type": "object",
             "properties": {
-                "student_id": {
+                "route_id": {
                     "type": "string",
-                    "description": "Mã sinh viên cần tra cứu (ví dụ: 'SV2026001')"
+                    "description": "Mã tuyến xe bus điện VinBus cần tra cứu (ví dụ: 'E01', 'E03')"
                 }
             },
-            "required": ["student_id"]
+            "required": ["route_id"]
         }
     },
     
     # --------------------------------------------------------------------------
-    # TODO 1.2: HỌC VIÊN HOÀN THIỆN TOOL SCHEMA CHO 'schedule_appointment'
-    # 🎯 YÊU CẦU THIẾT KẾ SCHEMA (JSON SCHEMA STANDARD):
-    # 1. Tool dùng để đặt lịch hẹn tư vấn học vụ với Cố vấn học tập VinUni.
-    # 2. Thiết kế các tham số (properties) để LLM trích xuất:
-    #    - student_id (string): Mã sinh viên cần đặt lịch (ví dụ: 'SV2026001')
-    #    - datetime_str (string): Thời gian hẹn (ví dụ: '14:00 15/09/2026')
-    #    - advisor_name (string): Tên cố vấn học tập
-    # 3. Khai báo danh sách các trường bắt buộc (required).
+    # Tool 2: Đăng ký làm thẻ vé tháng xe bus điện VinBus
     # --------------------------------------------------------------------------
     {
-        "name": "schedule_appointment",
-        "description": "Đặt lịch hẹn tư vấn học vụ với Cố vấn học tập VinUni.",
+        "name": "register_monthly_pass",
+        "description": "Đăng ký làm thẻ vé tháng đi xe bus điện VinBus (tuyến đơn hoặc liên tuyến) cho hành khách.",
         "parameters": {
             "type": "object",
             "properties": {
-                "student_id": {
+                "customer_name": {
                     "type": "string",
-                    "description": "Mã sinh viên cần đặt lịch (ví dụ: 'SV2026001')"
+                    "description": "Họ và tên của hành khách đăng ký thẻ (ví dụ: 'Nguyễn Văn An')"
                 },
-                "datetime_str": {
+                "phone_number": {
                     "type": "string",
-                    "description": "Thời gian hẹn tư vấn (ví dụ: '14:00 15/09/2026')"
+                    "description": "Số điện thoại liên hệ của hành khách (ví dụ: '0912345678')"
                 },
-                "advisor_name": {
+                "route_id": {
                     "type": "string",
-                    "description": "Tên cố vấn học tập cần gặp (ví dụ: 'PGS.TS Nguyễn Văn A')"
+                    "description": "Mã tuyến đăng ký (ví dụ: 'E01', 'E03') hoặc 'LIEN_TUYEN' nếu đăng ký vé liên tuyến"
+                },
+                "ticket_type": {
+                    "type": "string",
+                    "description": "Đối tượng vé: 'Ưu tiên' (Học sinh/Sinh viên - 55.000đ/tháng) hoặc 'Tiêu chuẩn' (100.000đ/tháng/tuyến đơn, 200.000đ/tháng/liên tuyến)"
                 }
             },
-            "required": ["student_id", "datetime_str"]
+            "required": ["customer_name", "phone_number", "route_id"]
         }
     }
 ]
 
 # ==============================================================================
-# 2. MÔ PHỎNG DỮ LIỆU & HÀM THỰC THI TOOL (EXECUTION LAYER)
+# 2. MÔ PHỎNG CƠ SỞ DỮ LIỆU TUYẾN XE VINBUS & HÀM THỰC THI (EXECUTION LAYER)
 # ==============================================================================
 
-MOCK_DATABASE = {
-    "SV2026001": {
-        "full_name": "Nguyễn Văn An",
-        "class": "AI-K4",
-        "gpa": 3.85,
-        "email": "an.nv@vinuni.edu.vn",
-        "status": "Đang học",
-        "advisor": "PGS.TS Nguyễn Văn A"
+MOCK_VINBUS_DATABASE = {
+    "E01": {
+        "route_name": "Tuyến E01: Bến xe Mỹ Đình - KĐT Vinhomes Ocean Park",
+        "operating_hours": "05:00 - 22:30 hàng ngày",
+        "frequency": "15 - 20 phút/chuyến",
+        "single_ticket_price": "8.000 VNĐ/lượt",
+        "monthly_pass_student": "55.000 VNĐ/tháng",
+        "monthly_pass_normal": "100.000 VNĐ/tháng",
+        "key_stops": "Bến xe Mỹ Đình - Phạm Hùng - Khuất Duy Tiến - Nguyễn Trãi - Ngã Tư Sở - Cầu Vĩnh Tuy - Vinhomes Ocean Park (Gia Lâm)"
     },
-    "SV2026002": {
-        "full_name": "Trần Thị Bình",
-        "class": "AI-K4",
-        "gpa": 3.60,
-        "email": "binh.tt@vinuni.edu.vn",
-        "status": "Đang học",
-        "advisor": "TS. Lê Thị B"
+    "E03": {
+        "route_name": "Tuyến E03: Cầu Giấy - KĐT Vinhomes Smart City",
+        "operating_hours": "05:05 - 22:00 hàng ngày",
+        "frequency": "15 - 20 phút/chuyến",
+        "single_ticket_price": "8.000 VNĐ/lượt",
+        "monthly_pass_student": "55.000 VNĐ/tháng",
+        "monthly_pass_normal": "100.000 VNĐ/tháng",
+        "key_stops": "Điểm trung chuyển Cầu Giấy - Kim Mã - Giảng Võ - Lê Văn Lương - Tố Hữu - KĐT Vinhomes Smart City (Tây Mỗ)"
     }
 }
 
 
-def execute_academic_query(student_id: str) -> str:
-    """Thực thi tra cứu học vụ theo mã sinh viên"""
-    student = MOCK_DATABASE.get(student_id.strip().upper())
-    if student:
+def execute_route_query(route_id: str) -> str:
+    """Thực thi tra cứu lộ trình xe bus điện VinBus"""
+    route_key = route_id.strip().upper()
+    route = MOCK_VINBUS_DATABASE.get(route_key)
+    if route:
         return json.dumps({
             "status": "SUCCESS",
-            "student_id": student_id,
-            "data": student
+            "route_id": route_key,
+            "data": route
         }, ensure_ascii=False)
     else:
         return json.dumps({
             "status": "NOT_FOUND",
-            "message": f"Không tìm thấy dữ liệu sinh viên có mã '{student_id}'"
+            "message": f"Không tìm thấy thông tin tuyến xe bus điện '{route_id}'. Hiện VinBus Hà Nội đang khai thác các tuyến chính như E01, E03, E05, v.v."
         }, ensure_ascii=False)
 
 
-def execute_schedule_appointment(student_id: str, datetime_str: str, advisor_name: str = "PGS.TS Nguyễn Văn A") -> str:
-    """Thực thi đặt lịch hẹn tư vấn học vụ"""
+def execute_register_monthly_pass(customer_name: str, phone_number: str, route_id: str, ticket_type: str = "Ưu tiên") -> str:
+    """Thực thi đăng ký làm thẻ vé tháng xe bus điện VinBus"""
+    ticket_price = "55.000 VNĐ/tháng (Ưu đãi HSSV)" if "ưu tiên" in ticket_type.lower() else "100.000 VNĐ/tháng"
     return json.dumps({
         "status": "SUCCESS",
-        "booking_id": f"BK-{student_id}-99",
-        "student_id": student_id,
-        "datetime": datetime_str,
-        "advisor": advisor_name,
-        "message": f"Đặt lịch thành công cho sinh viên {student_id} với {advisor_name} vào lúc {datetime_str}."
+        "booking_id": f"VB-PASS-{phone_number[-4:]}",
+        "customer_name": customer_name,
+        "phone_number": phone_number,
+        "route_id": route_id.strip().upper(),
+        "ticket_type": ticket_type,
+        "price": ticket_price,
+        "message": f"Đăng ký vé tháng VinBus thành công cho khách hàng {customer_name} ({phone_number}), tuyến {route_id.strip().upper()}, loại vé: {ticket_type} ({ticket_price}). Thẻ điện tử đã kích hoạt trên ứng dụng VinBus."
     }, ensure_ascii=False)
 
 
 # Router gọi tool thực tế
 TOOL_ROUTER = {
-    "academic_query": execute_academic_query,
-    "schedule_appointment": execute_schedule_appointment
+    "route_query": execute_route_query,
+    "register_monthly_pass": execute_register_monthly_pass,
+    # Hỗ trợ alias cũ nếu có
+    "academic_query": lambda student_id: execute_route_query("E01"),
+    "schedule_appointment": lambda **kw: execute_register_monthly_pass("Khách hàng", "0912345678", "E01")
 }
 
 def dispatch_tool_call(tool_name: str, arguments: Dict[str, Any]) -> str:

@@ -2,36 +2,36 @@
   {
     "id": "TC01",
     "type": "direct_query",
-    "question": "Chào bạn, bạn có thể giới thiệu quy chế học vụ cơ bản của Đại học VinUni không?",
-    "expected_behavior": "Chatbot trả lời trực tiếp từ System Prompt, không cần gọi bất kỳ Tool nào.",
+    "question": "Chào bạn, xe buýt điện VinBus có những ưu điểm và tiện ích gì nổi bật so với xe buýt truyền thống?",
+    "expected_behavior": "Chatbot trả lời trực tiếp từ System Prompt về các tiện ích xanh, wifi miễn phí, cổng sạc USB, không cần gọi bất kỳ Tool nào.",
     "complexity": "Low"
   },
   {
     "id": "TC02",
     "type": "single_tool_query",
-    "question": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
-    "expected_behavior": "Agent nhận diện nhu cầu tra cứu, tự động phát sinh Tool Call 'academic_query' với mã SV2026001.",
+    "question": "Hãy tra cứu lộ trình di chuyển và giờ hoạt động của tuyến xe bus điện E01.",
+    "expected_behavior": "Agent nhận diện nhu cầu tra cứu tuyến xe, tự động phát sinh Tool Call 'route_query' với mã tuyến E01.",
     "complexity": "Medium"
   },
   {
     "id": "TC03",
-    "type": "appointment_booking",
-    "question": "Tôi là sinh viên SV2026001, hãy đặt giúp tôi một lịch hẹn tư vấn học vụ với PGS.TS Nguyễn Văn A vào lúc 14:00 ngày 15/09/2026.",
-    "expected_behavior": "Agent tự động phát sinh Tool Call 'schedule_appointment' với đúng thời gian và thông tin sinh viên.",
+    "type": "ticket_registration",
+    "question": "Tôi tên là Nguyễn Văn An, số điện thoại 0912345678, hãy đăng ký giúp tôi một thẻ vé tháng xe bus điện VinBus tuyến E01 đối tượng sinh viên.",
+    "expected_behavior": "Agent tự động phát sinh Tool Call 'register_monthly_pass' với đầy đủ thông tin khách hàng, số điện thoại và tuyến E01.",
     "complexity": "Medium"
   },
   {
     "id": "TC04",
     "type": "multi_step_reasoning",
-    "question": "Hãy tra cứu thông tin học vụ của sinh viên SV2026002 và đặt lịch hẹn tư vấn với cố vấn học tập của sinh viên này vào lúc 09:00 ngày 20/09/2026.",
-    "expected_behavior": "Agent thực hiện chuỗi suy luận ReAct: Tra cứu cố vấn học tập của sinh viên trước, sau đó tiến hành đặt lịch hẹn.",
+    "question": "Hãy tra cứu thông tin tuyến xe bus điện E03 xem đi qua những đâu, sau đó đăng ký làm thẻ vé tháng tuyến E03 này cho khách hàng Trần Thị Bình, SĐT 0987654321.",
+    "expected_behavior": "Agent thực hiện chuỗi suy luận ReAct: Tra cứu lộ trình tuyến E03 trước, sau đó tiến hành đăng ký vé tháng cho khách hàng.",
     "complexity": "High"
   },
   {
     "id": "TC05",
     "type": "edge_case_handling",
-    "question": "Hãy kiểm tra thông tin học vụ và điểm số của sinh viên có mã số SV9999999.",
-    "expected_behavior": "Agent nhận kết quả NOT_FOUND từ Tool và đưa ra phản hồi lịch sự, chính xác không bịa đặt dữ liệu.",
+    "question": "Hãy kiểm tra thông tin lộ trình và giờ chạy của tuyến xe bus điện E99.",
+    "expected_behavior": "Agent nhận kết quả NOT_FOUND từ Tool do tuyến E99 chưa khai thác và đưa ra phản hồi lịch sự, chính xác không bịa đặt dữ liệu.",
     "complexity": "Medium"
   }
 ]

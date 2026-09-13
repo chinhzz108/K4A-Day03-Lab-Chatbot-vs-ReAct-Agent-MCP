@@ -37,48 +37,37 @@ class MockOfflineProvider(BaseLLMProvider):
     def generate_with_tools(self, prompt: str, tools_schema: List[Dict[str, Any]], system_prompt: str = "") -> Dict[str, Any]:
         prompt_lower = prompt.lower()
         
-        # Mô phỏng nhận diện intent gọi Tool
-        if "sv9999999" in prompt_lower:
+        # Mô phỏng nhận diện intent gọi Tool cho VinBus
+        if "e99" in prompt_lower or "sv9999999" in prompt_lower:
             return {
                 "type": "tool_call",
-                "tool_name": "academic_query",
-                "arguments": {"student_id": "SV9999999"},
-                "thought": "Người dùng muốn tra cứu sinh viên SV9999999. Tôi sẽ gọi tool academic_query để kiểm tra."
+                "tool_name": "route_query",
+                "arguments": {"route_id": "E99"},
+                "thought": "Hành khách muốn tra cứu tuyến xe bus điện E99. Tôi sẽ gọi tool route_query để kiểm tra hệ thống."
             }
-        elif ("đặt lịch" in prompt_lower or "lịch hẹn" in prompt_lower) and "sv2026001" in prompt_lower:
+        elif "vé tháng" in prompt_lower or "đăng ký" in prompt_lower:
+            name = "Trần Thị Bình" if "bình" in prompt_lower else "Nguyễn Văn An"
+            phone = "0987654321" if "bình" in prompt_lower else "0912345678"
+            r_id = "E03" if "e03" in prompt_lower else "E01"
             return {
                 "type": "tool_call",
-                "tool_name": "schedule_appointment",
-                "arguments": {"student_id": "SV2026001", "datetime_str": "14:00 15/09/2026", "advisor_name": "PGS.TS Nguyễn Văn A"},
-                "thought": "Người dùng yêu cầu đặt lịch hẹn tư vấn cho sinh viên SV2026001. Tôi sẽ gọi tool schedule_appointment."
+                "tool_name": "register_monthly_pass",
+                "arguments": {"customer_name": name, "phone_number": phone, "route_id": r_id, "ticket_type": "Ưu tiên"},
+                "thought": f"Hành khách yêu cầu đăng ký vé tháng VinBus tuyến {r_id}. Tôi sẽ gọi tool register_monthly_pass."
             }
-        elif "sv2026002" in prompt_lower:
-            if "đặt lịch" in prompt_lower or "lịch hẹn" in prompt_lower:
-                return {
-                    "type": "tool_call",
-                    "tool_name": "schedule_appointment",
-                    "arguments": {"student_id": "SV2026002", "datetime_str": "09:00 20/09/2026", "advisor_name": "TS. Lê Thị B"},
-                    "thought": "Người dùng muốn đặt lịch tư vấn cho sinh viên SV2026002 với cố vấn học tập TS. Lê Thị B. Tôi sẽ gọi tool schedule_appointment."
-                }
-            else:
-                return {
-                    "type": "tool_call",
-                    "tool_name": "academic_query",
-                    "arguments": {"student_id": "SV2026002"},
-                    "thought": "Người dùng muốn tra cứu thông tin học vụ của sinh viên SV2026002. Tôi sẽ gọi tool academic_query."
-                }
-        elif "sv2026001" in prompt_lower or "tra cứu" in prompt_lower:
+        elif "e01" in prompt_lower or "e03" in prompt_lower or "lộ trình" in prompt_lower or "tuyến" in prompt_lower:
+            r_id = "E03" if "e03" in prompt_lower else "E01"
             return {
                 "type": "tool_call",
-                "tool_name": "academic_query",
-                "arguments": {"student_id": "SV2026001"},
-                "thought": "Người dùng muốn tra cứu thông tin học vụ của sinh viên SV2026001. Tôi sẽ gọi tool academic_query."
+                "tool_name": "route_query",
+                "arguments": {"route_id": r_id},
+                "thought": f"Hành khách muốn tra cứu thông tin và lộ trình tuyến xe bus điện {r_id}. Tôi sẽ gọi tool route_query."
             }
         else:
             return {
                 "type": "text",
-                "content": f"[Mock Agent Response]: Xin chào! Quy chế học vụ VinUni yêu cầu sinh viên tích lũy tối thiểu 120 tín chỉ và duy trì GPA trên 2.0 để tốt nghiệp.",
-                "thought": "Câu hỏi chung về quy chế học vụ, trả lời trực tiếp không cần gọi Tool."
+                "content": "[Mock VinBus Response]: VinBus là hệ thống xe buýt điện thông minh đầu tiên tại Việt Nam do Tập đoàn Vingroup vận hành, 100% không phát thải, không tiếng ồn, có wifi tốc độ cao và thanh toán thẻ tiện lợi.",
+                "thought": "Câu hỏi chung về dịch vụ xe bus điện VinBus, trả lời trực tiếp không cần gọi Tool."
             }
 
 

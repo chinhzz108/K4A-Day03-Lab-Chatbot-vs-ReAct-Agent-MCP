@@ -1,120 +1,125 @@
 [
   {
     "step": 1,
-    "query": "Chào bạn, bạn có thể giới thiệu quy chế học vụ cơ bản của Đại học VinUni không?",
+    "query": "Chào bạn, xe buýt điện VinBus có những ưu điểm và tiện ích gì nổi bật so với xe buýt truyền thống?",
     "action_type": "FINAL_ANSWER",
     "thought": "Gemini phản hồi trực tiếp bằng văn bản (không cần gọi công cụ).",
-    "output": "Chào bạn! Rất vui được hỗ trợ bạn. Dưới đây là tóm tắt các điểm quan trọng trong **Quy chế Học vụ Cơ bản tại Đại học VinUni**:\n\n---\n\n### 1. Hệ thống Tín chỉ & Thang điểm (Grading System)\n* **Hệ thống tín chỉ:** Các chương trình đào tạo tại VinUni được thiết kế theo hệ thống tín chỉ chuẩn quốc tế.\n* **Thang điểm chữ & Thang điểm 4.0:**\n  * **A / A-** (3.7 - 4.0): Xuất sắc (Excellent)\n  * **B+ / B / B-** (2.7 - 3.3): Giỏi / Khá (Good)\n  * **C+ / C / C-** (1.7 - 2.3): Trung bình (Satisfactory)\n  * **D+ / D** (1.0 - 1.3): Tối thiểu đạt (Low Pass)\n  * **F** (0.0): Không đạt (Fail - phải học lại)\n\n---\n\n### 2. Xếp loại Học lực & GPA\n* **GPA tích lũy (Cumulative GPA):** Đánh giá kết quả học tập toàn khóa.\n* **Xếp loại:**\n  * **Xuất sắc (Summa Cum Laude / Magna Cum Laude):** GPA từ 3.6 - 4.0\n  * **Giỏi (Cum Laude):** GPA từ 3.2 - 3.59\n  * **Khá:** GPA từ 2.5 - 3.19\n  * **Trung bình:** GPA từ 2.0 - 2.49\n\n---\n\n### 3. Cảnh báo Học tập (Academic Probation)\n* Sinh viên có GPA tích lũy hoặc GPA học kỳ dưới **2.0/4.0** sẽ nhận **Cảnh báo học tập (Academic Probation)**.\n* Khi ở trạng thái cảnh báo, sinh viên sẽ nhận được sự hỗ trợ đặc biệt từ **Cố vấn học tập (Academic Advisor)** và bị giới hạn số lượng tín chỉ đăng ký tối đa trong học kỳ tiếp theo.\n\n---\n\n### 4. Liêm chính Học thuật (Academic Integrity)\n* VinUni áp dụng chính sách cực kỳ nghiêm ngặt đối với các hành vi vi phạm liêm chính học thuật như: **gian lận (cheating), đạo văn (plagiarism), hoặc nhờ người làm hộ bài**.\n* Mức phạt tùy theo mức độ nghiêm trọng: từ nhận điểm 0 cho bài thi/môn học đến đình chỉ học tập hoặc buộc xuất học.\n\n---\n\n### 5. Yêu cầu Cần thiết để Tốt nghiệp\n* Hoàn thành đầy đủ số lượng tín chỉ quy định của ngành học.\n* Đạt GPA tích lũy tối thiểu từ **2.0/4.0** trở lên.\n* Đạt chuẩn đầu ra tiếng Anh và các kỹ năng cốt lõi (Core competencies) theo yêu cầu của Trường/Viện.\n* Hoàn thành các tuần học trải nghiệm / thực tập / đồ án tốt nghiệp theo quy định ngành.\n\n---\n\nNếu bạn cần tra cứu **hồ sơ cá nhân** hoặc **đặt lịch hẹn với Cố vấn học tập**, vui lòng cung cấp Mã sinh viên (ví dụ: `SV2026001`) để mình hỗ trợ nhé!",
-    "latency_ms": 8562.32
+    "output": "Chào bạn! Xe buýt điện VinBus sở hữu nhiều ưu điểm vượt trội và tiện ích hiện đại so với xe buýt truyền thống, mang lại trải nghiệm di chuyển xanh, êm ái và tiện nghi cho hành khách:\n\n1. **Thân thiện với môi trường & Không tiếng ồn:**\n   * **Không phát thải:** Xe vận hành hoàn toàn bằng năng lượng điện, không xả khí thải độc hại ra môi trường.\n   * **Êm ái, không mùi:** Động cơ điện vận hành cực kỳ êm ái, không có tiếng ồn gầm hú và đặc biệt không có mùi xăng dầu, giúp giảm thiểu tối đa cảm giác say xe.\n\n2. **Tiện ích công nghệ hiện đại trên xe:**\n   * **Kết nối tiện lợi:** Trang bị hệ thống **Wifi miễn phí** tốc độ cao và **cổng sạc USB** tại từng vị trí ghế ngồi.\n   * **Hệ thống màn hình & Thông tin:** Màn hình LCD thông báo rõ ràng về các điểm dừng tiếp theo, thông tin lộ trình và các lưu ý an toàn.\n   * **Thanh toán linh hoạt:** Hỗ trợ thanh toán không dùng tiền mặt qua thẻ ngân hàng, ví điện tử, mã QR và ứng dụng VinBus.\n\n3. **Thiết kế văn minh & Thân thiện với mọi hành khách:**\n   * **Hỗ trợ tiếp cận (Accessibility):** Hệ thống sàn xe thấp tự động nâng hạ thân xe, đi kèm cầu dẫn dành riêng cho xe lăn, giúp người cao tuổi, trẻ em và người khuyết tật lên xuống xe dễ dàng, an toàn.\n   * **An toàn tối đa:** Trang bị camera an ninh quan sát toàn bộ xe, hệ thống cảnh báo hành vi lái xe mất tập trung/buồn ngủ của tài xế.\n\n4. **Chất lượng dịch vụ chuẩn mực:**\n   * Đội ngũ tài xế và nhân viên phục vụ được đào tạo bài bản, thái độ văn minh, lịch sự.\n   * Không gian xe luôn sạch sẽ, thoáng mát với hệ thống điều hòa hiện đại.\n\nNếu bạn cần tra cứu thêm thông tin lộ trình cụ thể của các tuyến VinBus hoặc hướng dẫn làm thẻ vé tháng, hãy cho mình biết nhé!",
+    "latency_ms": 11370.72
   },
   {
     "step": 1,
-    "query": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
+    "query": "Hãy tra cứu lộ trình di chuyển và giờ hoạt động của tuyến xe bus điện E01.",
     "action_type": "TOOL_EXECUTION",
-    "tool_name": "academic_query",
+    "tool_name": "route_query",
     "arguments": {
-      "student_id": "SV2026001"
+      "route_id": "E01"
     },
     "observation": {
       "status": "SUCCESS",
-      "student_id": "SV2026001",
+      "route_id": "E01",
       "data": {
-        "full_name": "Nguyễn Văn An",
-        "class": "AI-K4",
-        "gpa": 3.85,
-        "email": "an.nv@vinuni.edu.vn",
-        "status": "Đang học",
-        "advisor": "PGS.TS Nguyễn Văn A"
+        "route_name": "Tuyến E01: Bến xe Mỹ Đình - KĐT Vinhomes Ocean Park",
+        "operating_hours": "05:00 - 22:30 hàng ngày",
+        "frequency": "15 - 20 phút/chuyến",
+        "single_ticket_price": "8.000 VNĐ/lượt",
+        "monthly_pass_student": "55.000 VNĐ/tháng",
+        "monthly_pass_normal": "100.000 VNĐ/tháng",
+        "key_stops": "Bến xe Mỹ Đình - Phạm Hùng - Khuất Duy Tiến - Nguyễn Trãi - Ngã Tư Sở - Cầu Vĩnh Tuy - Vinhomes Ocean Park (Gia Lâm)"
       }
     },
-    "latency_ms": 2211.52
+    "latency_ms": 2418.75
   },
   {
     "step": 2,
-    "query": "Hãy tra cứu thông tin học vụ của sinh viên SV2026001.",
+    "query": "Hãy tra cứu lộ trình di chuyển và giờ hoạt động của tuyến xe bus điện E01.",
     "action_type": "FINAL_ANSWER",
     "thought": "Tổng hợp kết quả từ MCP Server thành công.",
-    "output": "Kết quả tra cứu cho sinh viên SV2026001 (Nguyễn Văn An): Lớp AI-K4, GPA: 3.85, Email: an.nv@vinuni.edu.vn, Trạng thái: Đang học, Cố vấn: PGS.TS Nguyễn Văn A.",
+    "output": "Tuyến E01: Bến xe Mỹ Đình - KĐT Vinhomes Ocean Park. Giờ hoạt động: 05:00 - 22:30 hàng ngày. Tần suất: 15 - 20 phút/chuyến. Giá vé lượt: 8.000 VNĐ/lượt. Lộ trình qua các điểm chính: Bến xe Mỹ Đình - Phạm Hùng - Khuất Duy Tiến - Nguyễn Trãi - Ngã Tư Sở - Cầu Vĩnh Tuy - Vinhomes Ocean Park (Gia Lâm).",
     "latency_ms": 10.0
   },
   {
     "step": 1,
-    "query": "Tôi là sinh viên SV2026001, hãy đặt giúp tôi một lịch hẹn tư vấn học vụ với PGS.TS Nguyễn Văn A vào lúc 14:00 ngày 15/09/2026.",
+    "query": "Tôi tên là Nguyễn Văn An, số điện thoại 0912345678, hãy đăng ký giúp tôi một thẻ vé tháng xe bus điện VinBus tuyến E01 đối tượng sinh viên.",
     "action_type": "TOOL_EXECUTION",
-    "tool_name": "schedule_appointment",
+    "tool_name": "register_monthly_pass",
     "arguments": {
-      "student_id": "SV2026001",
-      "datetime_str": "14:00 15/09/2026",
-      "advisor_name": "PGS.TS Nguyễn Văn A"
+      "phone_number": "0912345678",
+      "ticket_type": "Ưu tiên",
+      "customer_name": "Nguyễn Văn An",
+      "route_id": "E01"
     },
     "observation": {
       "status": "SUCCESS",
-      "booking_id": "BK-SV2026001-99",
-      "student_id": "SV2026001",
-      "datetime": "14:00 15/09/2026",
-      "advisor": "PGS.TS Nguyễn Văn A",
-      "message": "Đặt lịch thành công cho sinh viên SV2026001 với PGS.TS Nguyễn Văn A vào lúc 14:00 15/09/2026."
+      "booking_id": "VB-PASS-5678",
+      "customer_name": "Nguyễn Văn An",
+      "phone_number": "0912345678",
+      "route_id": "E01",
+      "ticket_type": "Ưu tiên",
+      "price": "55.000 VNĐ/tháng (Ưu đãi HSSV)",
+      "message": "Đăng ký vé tháng VinBus thành công cho khách hàng Nguyễn Văn An (0912345678), tuyến E01, loại vé: Ưu tiên (55.000 VNĐ/tháng (Ưu đãi HSSV)). Thẻ điện tử đã kích hoạt trên ứng dụng VinBus."
     },
-    "latency_ms": 2613.84
+    "latency_ms": 3630.47
   },
   {
     "step": 2,
-    "query": "Tôi là sinh viên SV2026001, hãy đặt giúp tôi một lịch hẹn tư vấn học vụ với PGS.TS Nguyễn Văn A vào lúc 14:00 ngày 15/09/2026.",
+    "query": "Tôi tên là Nguyễn Văn An, số điện thoại 0912345678, hãy đăng ký giúp tôi một thẻ vé tháng xe bus điện VinBus tuyến E01 đối tượng sinh viên.",
     "action_type": "FINAL_ANSWER",
     "thought": "Tổng hợp kết quả từ MCP Server thành công.",
-    "output": "Đặt lịch thành công cho sinh viên SV2026001 với PGS.TS Nguyễn Văn A vào lúc 14:00 15/09/2026.",
+    "output": "Đăng ký vé tháng VinBus thành công cho khách hàng Nguyễn Văn An (0912345678), tuyến E01, loại vé: Ưu tiên (55.000 VNĐ/tháng (Ưu đãi HSSV)). Thẻ điện tử đã kích hoạt trên ứng dụng VinBus.",
     "latency_ms": 10.0
   },
   {
     "step": 1,
-    "query": "Hãy tra cứu thông tin học vụ của sinh viên SV2026002 và đặt lịch hẹn tư vấn với cố vấn học tập của sinh viên này vào lúc 09:00 ngày 20/09/2026.",
+    "query": "Hãy tra cứu thông tin tuyến xe bus điện E03 xem đi qua những đâu, sau đó đăng ký làm thẻ vé tháng tuyến E03 này cho khách hàng Trần Thị Bình, SĐT 0987654321.",
     "action_type": "TOOL_EXECUTION",
-    "tool_name": "academic_query",
+    "tool_name": "route_query",
     "arguments": {
-      "student_id": "SV2026002"
+      "route_id": "E03"
     },
     "observation": {
       "status": "SUCCESS",
-      "student_id": "SV2026002",
+      "route_id": "E03",
       "data": {
-        "full_name": "Trần Thị Bình",
-        "class": "AI-K4",
-        "gpa": 3.6,
-        "email": "binh.tt@vinuni.edu.vn",
-        "status": "Đang học",
-        "advisor": "TS. Lê Thị B"
+        "route_name": "Tuyến E03: Cầu Giấy - KĐT Vinhomes Smart City",
+        "operating_hours": "05:05 - 22:00 hàng ngày",
+        "frequency": "15 - 20 phút/chuyến",
+        "single_ticket_price": "8.000 VNĐ/lượt",
+        "monthly_pass_student": "55.000 VNĐ/tháng",
+        "monthly_pass_normal": "100.000 VNĐ/tháng",
+        "key_stops": "Điểm trung chuyển Cầu Giấy - Kim Mã - Giảng Võ - Lê Văn Lương - Tố Hữu - KĐT Vinhomes Smart City (Tây Mỗ)"
       }
     },
-    "latency_ms": 2839.81
+    "latency_ms": 3438.03
   },
   {
     "step": 2,
-    "query": "Hãy tra cứu thông tin học vụ của sinh viên SV2026002 và đặt lịch hẹn tư vấn với cố vấn học tập của sinh viên này vào lúc 09:00 ngày 20/09/2026.",
+    "query": "Hãy tra cứu thông tin tuyến xe bus điện E03 xem đi qua những đâu, sau đó đăng ký làm thẻ vé tháng tuyến E03 này cho khách hàng Trần Thị Bình, SĐT 0987654321.",
     "action_type": "FINAL_ANSWER",
     "thought": "Tổng hợp kết quả từ MCP Server thành công.",
-    "output": "Kết quả tra cứu cho sinh viên SV2026002 (Trần Thị Bình): Lớp AI-K4, GPA: 3.6, Email: binh.tt@vinuni.edu.vn, Trạng thái: Đang học, Cố vấn: TS. Lê Thị B.",
+    "output": "Tuyến E03: Cầu Giấy - KĐT Vinhomes Smart City. Giờ hoạt động: 05:05 - 22:00 hàng ngày. Tần suất: 15 - 20 phút/chuyến. Giá vé lượt: 8.000 VNĐ/lượt. Lộ trình qua các điểm chính: Điểm trung chuyển Cầu Giấy - Kim Mã - Giảng Võ - Lê Văn Lương - Tố Hữu - KĐT Vinhomes Smart City (Tây Mỗ).",
     "latency_ms": 10.0
   },
   {
     "step": 1,
-    "query": "Hãy kiểm tra thông tin học vụ và điểm số của sinh viên có mã số SV9999999.",
+    "query": "Hãy kiểm tra thông tin lộ trình và giờ chạy của tuyến xe bus điện E99.",
     "action_type": "TOOL_EXECUTION",
-    "tool_name": "academic_query",
+    "tool_name": "route_query",
     "arguments": {
-      "student_id": "SV9999999"
+      "route_id": "E99"
     },
     "observation": {
       "status": "NOT_FOUND",
-      "message": "Không tìm thấy dữ liệu sinh viên có mã 'SV9999999'"
+      "message": "Không tìm thấy thông tin tuyến xe bus điện 'E99'. Hiện VinBus Hà Nội đang khai thác các tuyến chính như E01, E03, E05, v.v."
     },
-    "latency_ms": 2535.05
+    "latency_ms": 2676.42
   },
   {
     "step": 2,
-    "query": "Hãy kiểm tra thông tin học vụ và điểm số của sinh viên có mã số SV9999999.",
+    "query": "Hãy kiểm tra thông tin lộ trình và giờ chạy của tuyến xe bus điện E99.",
     "action_type": "FINAL_ANSWER",
     "thought": "Tổng hợp kết quả từ MCP Server thành công.",
-    "output": "Không tìm thấy dữ liệu sinh viên có mã 'SV9999999'",
+    "output": "Không tìm thấy thông tin tuyến xe bus điện 'E99'. Hiện VinBus Hà Nội đang khai thác các tuyến chính như E01, E03, E05, v.v.",
     "latency_ms": 10.0
   }
 ]
