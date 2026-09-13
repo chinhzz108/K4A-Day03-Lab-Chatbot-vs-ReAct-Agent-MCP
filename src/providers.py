@@ -38,13 +38,35 @@ class MockOfflineProvider(BaseLLMProvider):
         prompt_lower = prompt.lower()
         
         # Mô phỏng nhận diện intent gọi Tool
-        if "sv2026001" in prompt_lower and "đặt lịch" in prompt_lower:
+        if "sv9999999" in prompt_lower:
+            return {
+                "type": "tool_call",
+                "tool_name": "academic_query",
+                "arguments": {"student_id": "SV9999999"},
+                "thought": "Người dùng muốn tra cứu sinh viên SV9999999. Tôi sẽ gọi tool academic_query để kiểm tra."
+            }
+        elif ("đặt lịch" in prompt_lower or "lịch hẹn" in prompt_lower) and "sv2026001" in prompt_lower:
             return {
                 "type": "tool_call",
                 "tool_name": "schedule_appointment",
                 "arguments": {"student_id": "SV2026001", "datetime_str": "14:00 15/09/2026", "advisor_name": "PGS.TS Nguyễn Văn A"},
                 "thought": "Người dùng yêu cầu đặt lịch hẹn tư vấn cho sinh viên SV2026001. Tôi sẽ gọi tool schedule_appointment."
             }
+        elif "sv2026002" in prompt_lower:
+            if "đặt lịch" in prompt_lower or "lịch hẹn" in prompt_lower:
+                return {
+                    "type": "tool_call",
+                    "tool_name": "schedule_appointment",
+                    "arguments": {"student_id": "SV2026002", "datetime_str": "09:00 20/09/2026", "advisor_name": "TS. Lê Thị B"},
+                    "thought": "Người dùng muốn đặt lịch tư vấn cho sinh viên SV2026002 với cố vấn học tập TS. Lê Thị B. Tôi sẽ gọi tool schedule_appointment."
+                }
+            else:
+                return {
+                    "type": "tool_call",
+                    "tool_name": "academic_query",
+                    "arguments": {"student_id": "SV2026002"},
+                    "thought": "Người dùng muốn tra cứu thông tin học vụ của sinh viên SV2026002. Tôi sẽ gọi tool academic_query."
+                }
         elif "sv2026001" in prompt_lower or "tra cứu" in prompt_lower:
             return {
                 "type": "tool_call",
